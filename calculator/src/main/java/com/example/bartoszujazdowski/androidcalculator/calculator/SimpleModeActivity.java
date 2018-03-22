@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,8 @@ public class SimpleModeActivity extends AppCompatActivity {
     private Button minusButton;
     private Button addButton;
 
+    private EditText resultText;
+
     private double result = 0.0;
     private double input = 0.0;
 
@@ -40,6 +43,9 @@ public class SimpleModeActivity extends AppCompatActivity {
     }
 
     private void initialize(){
+        resultText = (EditText) findViewById(R.id.resultNumber);
+        resultText.setText("0");
+
         num0 = (Button) findViewById(R.id.num0);
         num1 = (Button) findViewById(R.id.num1);
         num2 = (Button) findViewById(R.id.num2);
@@ -81,5 +87,12 @@ public class SimpleModeActivity extends AppCompatActivity {
                 SimpleModeActivity.this.input = 0.0;
             }
         });
+
+        for(Button digit : numberButtons){
+        }
+    }
+
+    public void onClickDigit(View view){
+
     }
 }
