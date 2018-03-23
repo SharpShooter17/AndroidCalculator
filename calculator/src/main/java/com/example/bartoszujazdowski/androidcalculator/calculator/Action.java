@@ -1,15 +1,11 @@
 package com.example.bartoszujazdowski.androidcalculator.calculator;
 
-/**
- * Created by Bartosz Ujazdowski on 22.03.2018.
- */
-
 public enum Action {
     DIVISION("/"),
     MULTIPLICATION("*"),
     SUBSTRACTION("-"),
-    ADDITION("+");
-
+    ADDITION("+"),
+    EMPTY("");
     String action;
 
     Action(String action){
@@ -19,5 +15,14 @@ public enum Action {
     @Override
     public String toString(){
         return action;
+    }
+
+    static Action get(String value){
+        for (Action action : Action.values()){
+            if (value.equals(action.action)){
+                return action;
+            }
+        }
+        return null;
     }
 }

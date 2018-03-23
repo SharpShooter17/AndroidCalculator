@@ -15,6 +15,15 @@
         tools:ignore="MissingConstraints">
 
         <EditText
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:textAlignment="textEnd"
+            android:inputType="numberDecimal" />
+
+        <EditText
             android:id="@+id/resultNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,28 +49,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="7" />
+                    android:text="7"
+                    android:onClick="onClickDigit"/>
 
                 <Button
                     android:id="@+id/num8"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="8" />
+                    android:text="8"
+                    android:onClick="onClickDigit"/>
 
                 <Button
                     android:id="@+id/num9"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="9" />
+                    android:text="9"
+                    android:onClick="onClickDigit"/>
 
                 <Button
                     android:id="@+id/divButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="/" />
+                    android:text="/"
+                    android:onClick="onClickAction"/>
             </LinearLayout>
 
             <LinearLayout
@@ -74,28 +87,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="4" />
+                    android:text="4"
+                    android:onClick="onClickDigit"/>
 
                 <Button
                     android:id="@+id/num5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="5" />
+                    android:text="5"
+                    android:onClick="onClickDigit"/>
 
                 <Button
                     android:id="@+id/num6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="6" />
+                    android:text="6"
+                    android:onClick="onClickDigit"/>
 
                 <Button
                     android:id="@+id/multipleButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="*" />
+                    android:text="*"
+                    android:onClick="onClickAction"/>
             </LinearLayout>
 
             <LinearLayout
@@ -108,28 +125,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="1" />
+                    android:text="1"
+                    android:onClick="onClickDigit"/>
 
                 <Button
                     android:id="@+id/num2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="2" />
+                    android:text="2"
+                    android:onClick="onClickDigit"/>
 
                 <Button
                     android:id="@+id/num3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="3" />
+                    android:text="3"
+                    android:onClick="onClickDigit"/>
 
                 <Button
                     android:id="@+id/minusButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="-" />
+                    android:text="-"
+                    android:onClick="onClickAction"/>
             </LinearLayout>
 
             <LinearLayout
@@ -142,28 +163,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="." />
+                    android:text="."
+                    android:onClick="onClickComa"/>
 
                 <Button
                     android:id="@+id/num0"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="0" />
+                    android:text="0"
+                    android:onClick="onClickDigit"/>
 
                 <Button
                     android:id="@+id/equalButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="=" />
+                    android:text="="
+                    android:onClick="onClickEquals"/>
 
                 <Button
                     android:id="@+id/plusButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="+" />
+                    android:text="+"
+                    android:onClick="onClickAction" />
             </LinearLayout>
 
             <LinearLayout
@@ -176,7 +201,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="DELETE" />
+                    android:text="DELETE"
+                    android:onClick="onClickDelete"/>
             </LinearLayout>
         </LinearLayout>
 
