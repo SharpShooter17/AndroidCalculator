@@ -77,7 +77,7 @@ public class Calculate {
                 this.firstNum = this.secondNum;
                 break;
         }
-        if (isOneParameterFunctionSet()){
+        if (isOneParameterFunction(this.action)){
             this.writeToFirstNum = true;
         }
 
@@ -111,13 +111,18 @@ public class Calculate {
         return action;
     }
 
-    private Boolean isOneParameterFunctionSet(){
+    private Boolean isOneParameterFunction(Action action){
         return action == Action.COS || action == Action.SIN || action == Action.TAN || action == Action.LN || action == Action.SQRT || action == Action.XPOW2 || action == Action.LOG;
     }
 
     public void setAction(Action action) throws ArithmeticException{
+        if (this.isOneParameterFunction(this.action) && !this.isOneParameterFunction(action)){
+            this.writeToFirstNum = false;
+        }
+
         this.action = action;
-        if (this.isOneParameterFunctionSet()){
+
+        if (this.isOneParameterFunction(this.action)){
             this.calculate();
         }
     }
