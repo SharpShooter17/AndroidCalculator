@@ -3,7 +3,7 @@
     package="com.example.bartoszujazdowski.androidcalculator.calculator">
 
     <application>
-        <activity android:name=".Menu">
+        <activity android:name="com.example.bartoszujazdowski.androidcalculator.calculator.Menu">
             <intent-filter android:order="1">
                 <action android:name="android.intent.action.VIEW" />
 
@@ -29,7 +29,20 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="com.example.bartoszujazdowski.androidcalculator.calculator.SimpleModeActivity"
+                    android:host="com.example.bartoszujazdowski.androidcalculator.calculator"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.example.bartoszujazdowski.androidcalculator.calculator.AdvancedModeActivity">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.example.bartoszujazdowski.androidcalculator.calculator"
                     android:pathPattern="/.*"
                     android:scheme="https" />
             </intent-filter>

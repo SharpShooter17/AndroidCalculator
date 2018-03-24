@@ -26,6 +26,12 @@
             android:text="ADVANCE MODE" />
 
         <Button
+            android:id="@+id/aboutButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ABOUT" />
+
+        <Button
             android:id="@+id/exitButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

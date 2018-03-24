@@ -5,6 +5,14 @@ public enum Action {
     MULTIPLICATION("*"),
     SUBSTRACTION("-"),
     ADDITION("+"),
+    XPOW2("x^2"),
+    XPOWY("x^y"),
+    SIN("sin"),
+    COS("cos"),
+    TAN("tan"),
+    LN("ln"),
+    LOG("log"),
+    SQRT("sqrt"),
     EMPTY("");
     String action;
 

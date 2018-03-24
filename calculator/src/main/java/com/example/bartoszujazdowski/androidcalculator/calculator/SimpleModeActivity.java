@@ -12,27 +12,24 @@ import java.util.List;
 
 public class SimpleModeActivity extends AppCompatActivity {
 
-    private Button delButton;
+    protected EditText resultET;
+    protected EditText resultText;
 
-    private EditText resultET;
-    private EditText resultText;
-
-    private StringBuilder input = new StringBuilder();
-    private Calculate calculate;
+    protected StringBuilder input = new StringBuilder();
+    protected Calculate calculate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simple_mode);
-        this.calculate = new Calculate();
-        initialize();
+        this.initialize();
     }
 
-    private void initialize(){
+    protected void initialize(){
+        this.calculate = new Calculate();
         resultText = (EditText) findViewById(R.id.resultNumber);
         resultText.setText(input);
         resultET = (EditText) findViewById(R.id.result);
-        delButton = (Button) findViewById(R.id.delButton);
     }
 
     public void onClickPlusMinus(View view){
@@ -67,7 +64,11 @@ public class SimpleModeActivity extends AppCompatActivity {
         if (this.input.length() > 0) {
             this.calculate.setNum(Double.parseDouble(input.toString()));
         }
-        this.calculate.setAction(Action.get(action.getText().toString()));
+        try {
+            this.calculate.setAction(Action.get(action.getText().toString()));
+        } catch (ArithmeticException ex){
+            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
+        }
         this.input = new StringBuilder();
         this.refreshInput();
     }
@@ -83,7 +84,7 @@ public class SimpleModeActivity extends AppCompatActivity {
         try {
             this.calculate.equal();
         } catch (ArithmeticException ex){
-            Toast.makeText(this, "You can not divide by 0!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
         }
         this.input = new StringBuilder();
         this.refreshInput();
@@ -106,10 +107,10 @@ public class SimpleModeActivity extends AppCompatActivity {
     }
 
     public void onClickComa(View view) throws Exception {
-        if ( input.indexOf(".") != -1 ){
+        if ( this.input.indexOf(".") != -1 ){
             return;
         }
-        input.append(".");
-        refreshInput();
+        this.input.append(".");
+        this.refreshInput();
     }
 }

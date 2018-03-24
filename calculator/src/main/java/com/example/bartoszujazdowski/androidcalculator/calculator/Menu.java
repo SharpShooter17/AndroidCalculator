@@ -10,11 +10,13 @@ public class Menu extends AppCompatActivity {
 
     private Button simpleButton;
     private Button advanceButton;
+    private Button aboutButton;
     private Button exitButton;
 
     private void init(){
         simpleButton = (Button) findViewById(R.id.simpleButton);
         advanceButton = (Button) findViewById(R.id.advanceButton);
+        aboutButton = (Button) findViewById(R.id.aboutButton);
         exitButton = (Button) findViewById(R.id.exitButton);
 
         simpleButton.setOnClickListener(new View.OnClickListener(){
@@ -23,6 +25,11 @@ public class Menu extends AppCompatActivity {
                 Intent intent = new Intent(Menu.this, SimpleModeActivity.class);
                 startActivity(intent);
             }
+        });
+
+        advanceButton.setOnClickListener((view) -> {
+            Intent intent = new Intent(Menu.this, AdvancedModeActivity.class);
+            startActivity(intent);
         });
 
         exitButton.setOnClickListener(new View.OnClickListener() {

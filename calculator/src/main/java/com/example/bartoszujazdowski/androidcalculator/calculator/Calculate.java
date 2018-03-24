@@ -28,7 +28,7 @@ public class Calculate {
                 if (this.getSecondNum() != 0) {
                     this.firstNum = this.getFirstNum() / this.getSecondNum();
                 } else {
-                    throw new ArithmeticException();
+                    throw new ArithmeticException("You can not divide by 0");
                 }
                 break;
             case MULTIPLICATION:
@@ -40,9 +40,53 @@ public class Calculate {
             case ADDITION:
                 this.firstNum = this.getFirstNum() + this.getSecondNum();
                 break;
+            case XPOW2:
+                this.firstNum *= this.firstNum;
+                break;
+            case XPOWY:
+                this.firstNum = Math.pow(this.firstNum, this.secondNum);
+                break;
+            case SIN:
+                this.firstNum = Math.sin(this.firstNum);
+                break;
+            case COS:
+                this.firstNum = Math.cos(this.firstNum);
+                break;
+            case TAN:
+                this.firstNum = Math.tan(this.firstNum);
+                break;
+            case LN:
+                if ( this.firstNum < 0 ){
+                    throw new ArithmeticException("Number less than 0!");
+                }
+                this.firstNum = Math.log(this.firstNum);
+                break;
+            case LOG:
+                if ( this.firstNum < 0 ){
+                    throw new ArithmeticException("Number less than 0!");
+                }
+                this.firstNum = Math.log10(this.firstNum);
+                break;
+            case SQRT:
+                if ( this.firstNum < 0 ){
+                    throw new ArithmeticException("Number less than 0!");
+                }
+                this.firstNum = Math.sqrt(this.firstNum);
+                break;
             case EMPTY:
                 this.firstNum = this.secondNum;
                 break;
+        }
+        if (isOneParameterFunctionSet()){
+            this.writeToFirstNum = true;
+        }
+
+        if (Double.isInfinite(this.firstNum)){
+            throw new ArithmeticException("Result is infinite!");
+        }
+
+        if (Double.isNaN(this.firstNum)){
+            throw new ArithmeticException("Result is NaN!");
         }
     }
 
@@ -67,7 +111,14 @@ public class Calculate {
         return action;
     }
 
-    public void setAction(Action action){
+    private Boolean isOneParameterFunctionSet(){
+        return action == Action.COS || action == Action.SIN || action == Action.TAN || action == Action.LN || action == Action.SQRT || action == Action.XPOW2 || action == Action.LOG;
+    }
+
+    public void setAction(Action action) throws ArithmeticException{
         this.action = action;
+        if (this.isOneParameterFunctionSet()){
+            this.calculate();
+        }
     }
 }
