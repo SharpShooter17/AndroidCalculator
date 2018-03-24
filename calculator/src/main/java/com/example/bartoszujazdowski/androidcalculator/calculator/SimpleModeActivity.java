@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,6 @@ public class SimpleModeActivity extends AppCompatActivity {
 
     private StringBuilder input = new StringBuilder();
     private Calculate calculate;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,28 @@ public class SimpleModeActivity extends AppCompatActivity {
         delButton = (Button) findViewById(R.id.delButton);
     }
 
+    public void onClickPlusMinus(View view){
+        if (this.input.length() == 0){
+            return;
+        }
+        Double val = Double.parseDouble(this.input.toString());
+        if (val < 0){
+            this.input.deleteCharAt(0);
+        } else {
+            this.input.insert(0, '-');
+        }
+        this.refreshInput();
+    }
+
+    public void onClickBack(View view){
+        int len = this.input.length()-1;
+        if(len < 0){
+            return;
+        }
+        this.input = this.input.deleteCharAt(len);
+        this.refreshInput();
+    }
+
     private void refreshInput(){
         this.resultET.setText( this.calculate.getFirstNum().toString() );
         this.resultText.setText(this.input);
@@ -42,22 +64,37 @@ public class SimpleModeActivity extends AppCompatActivity {
 
     public void onClickAction(View view){
         Button action = (Button) view;
-        this.calculate.setNum(Double.parseDouble(input.toString()));
+        if (this.input.length() > 0) {
+            this.calculate.setNum(Double.parseDouble(input.toString()));
+        }
         this.calculate.setAction(Action.get(action.getText().toString()));
         this.input = new StringBuilder();
         this.refreshInput();
     }
 
     public void onClickEquals(View view){
-        this.calculate.setNum(Double.parseDouble(this.input.toString()));
-        this.calculate.equal();
-        this.input = new StringBuilder(this.calculate.getFirstNum().toString());
+        if (this.input.length() > 0) {
+            try {
+                this.calculate.setNum(Double.parseDouble(this.input.toString()));
+            } catch (NumberFormatException ex){
+                Toast.makeText(this.getApplicationContext(), "Enter correct number!", Toast.LENGTH_LONG);
+            }
+        }
+        try {
+            this.calculate.equal();
+        } catch (ArithmeticException ex){
+            Toast.makeText(this, "You can not divide by 0!", Toast.LENGTH_LONG).show();
+        }
+        this.input = new StringBuilder();
         this.refreshInput();
     }
 
     public void onClickDelete(View view){
-        this.calculate.clear();
-        this.input = new StringBuilder();
+        if (this.input.length() == 0){
+            this.calculate.clear();
+        } else {
+            this.input = new StringBuilder();
+        }
         this.refreshInput();
     }
 

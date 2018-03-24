@@ -10,10 +10,8 @@ public class Calculate {
         this.clear();
     }
 
-    public Double equal(){
+    public Double equal() throws ArithmeticException {
         this.calculate();
-        this.secondNum = 0.0;
-
         return this.getFirstNum();
     }
 
@@ -24,10 +22,14 @@ public class Calculate {
         this.writeToFirstNum = true;
     }
 
-    private void calculate(){
+    private void calculate() throws ArithmeticException{
         switch (this.getAction()){
             case DIVISION:
-                this.firstNum = this.getFirstNum() / this.getSecondNum();
+                if (this.getSecondNum() != 0) {
+                    this.firstNum = this.getFirstNum() / this.getSecondNum();
+                } else {
+                    throw new ArithmeticException();
+                }
                 break;
             case MULTIPLICATION:
                 this.firstNum = this.getFirstNum() * this.getSecondNum();
@@ -37,6 +39,9 @@ public class Calculate {
                 break;
             case ADDITION:
                 this.firstNum = this.getFirstNum() + this.getSecondNum();
+                break;
+            case EMPTY:
+                this.firstNum = this.secondNum;
                 break;
         }
     }

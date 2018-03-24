@@ -30,14 +30,43 @@
             android:ems="10"
             android:enabled="false"
             android:inputType="numberSigned"
-            android:numeric="decimal"
-            android:text="0"
             android:textAlignment="textEnd" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="\u232b"
+                    android:onClick="onClickBack"/>
+
+                <Button
+                    android:id="@+id/delButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onClickDelete"
+                    android:text="C/CE" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="\u00B1"
+                    android:onClick="onClickPlusMinus"/>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -191,19 +220,6 @@
                     android:onClick="onClickAction" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/delButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="DELETE"
-                    android:onClick="onClickDelete"/>
-            </LinearLayout>
         </LinearLayout>
 
 
